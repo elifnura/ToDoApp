@@ -7,33 +7,33 @@ export default {
       }, 250);
     });
   },
-  addNewTask({ commit }, data) {
+  addNewTask({ commit }, newTask) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        commit('ADD_NEW_TASK', data);
+        commit('ADD_NEW_TASK', newTask);
         resolve();
       }, 250);
     });
   },
-  deleteTask({ commit }, data) {
+  deleteTask({ commit }, taskId) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        commit('DELETE_TASK', data);
+        commit('DELETE_TASK', taskId);
         resolve();
       }, 250);
     });
   },
-  editTask({ commit }, data) {
+  editTask({ commit }, editedTask) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        commit('EDIT_TASK', data);
+        commit('EDIT_TASK', editedTask);
         resolve();
       }, 250);
     });
   },
-  taskDone({ commit }, data) {
+  taskDone({ commit }, checkedTask) {
     return new Promise((resolve) => {
-      commit('TASK_DONE', data);
+      commit('TASK_DONE', checkedTask);
       setTimeout(() => {
         resolve();
       }, 250);

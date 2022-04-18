@@ -3,20 +3,19 @@ import TaskList from './components/TaskList.vue';
 import AddNewTask from './components/AddNewTask.vue';
 
 export default {
-  name: 'App',
+  name: 'ToDo',
   components: {
     TaskList,
     AddNewTask,
   },
-  data: () => ({}),
 };
 </script>
 
 <template>
   <v-app>
     <v-main>
-      <v-toolbar color="#ff33ae" extended flat extension-height="120">
-      </v-toolbar>
+      <v-toolbar color="#ff33ae" extended flat extension-height="120" />
+
       <v-card
         class="mx-auto pa-4 mb-10"
         max-width="700"
@@ -33,9 +32,11 @@ export default {
         >
           New Todo:
         </v-card-title>
-        <AddNewTask />
+
+        <add-new-task />
       </v-card>
-      <TaskList />
+
+      <task-list />
     </v-main>
   </v-app>
 </template>

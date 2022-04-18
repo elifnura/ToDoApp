@@ -1,4 +1,6 @@
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'AddNewTask',
   data: () => ({
@@ -8,13 +10,15 @@ export default {
     },
   }),
   methods: {
-    onAddNewTask() {
+    ...mapActions('todo', ['getTaskList', 'addNewTask']),
+    addTask() {
       if (!this.newTask.name) {
         return;
       }
 
-      this.$store.dispatch('todo/addNewTask', this.newTask);
-      this.$store.dispatch('todo/getTaskList');
+      this.getTaskList();
+      this.addNewTask(this.newTask);
+      this.getTaskList();
       this.clearAddForm();
     },
     clearAddForm() {
@@ -33,7 +37,7 @@ export default {
       v-model="newTask.name"
       hide-details="auto"
       outlined
-    ></v-text-field>
-    <v-btn @click="onAddNewTask()" color="#ff33ae" class="ms-4 white--text" raised>Add</v-btn>
+    />
+    <v-btn @click="addTask" color="#ff33ae" class="ms-4 white--text" raised>Add</v-btn>
   </div>
 </template>

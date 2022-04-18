@@ -7,7 +7,7 @@ export default {
     state.tasks = tasks;
   },
 
-  ADD_NEW_TASK(state, payload) {
+  ADD_NEW_TASK(state, newTask) {
     lastId += 1;
 
     if (state.tasks == null) {
@@ -16,25 +16,25 @@ export default {
 
     state.tasks.push({
       id: lastId,
-      name: payload.name,
-      isDone: payload.isDone,
+      name: newTask.name,
+      isDone: newTask.isDone,
     });
     localStorage.setItem('tasks', JSON.stringify(state.tasks));
   },
 
-  DELETE_TASK(state, payload) {
-    state.tasks = state.tasks.filter((t) => t.id !== payload);
+  DELETE_TASK(state, taskId) {
+    state.tasks = state.tasks.filter((task) => task.id !== taskId);
     localStorage.setItem('tasks', JSON.stringify(state.tasks));
   },
 
-  EDIT_TASK(state, { taskId, payload }) {
+  EDIT_TASK(state, { taskId, editedTask }) {
     const taskIndex = state.tasks.findIndex((t) => t.id === taskId);
 
     if (taskIndex !== -1) {
       const updatedTask = {
         id: taskId,
-        name: payload.name,
-        isDone: payload.isDone,
+        name: editedTask.name,
+        isDone: editedTask.isDone,
       };
 
       Vue.set(state.tasks, taskIndex, updatedTask);
