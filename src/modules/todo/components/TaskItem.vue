@@ -64,7 +64,13 @@ export default {
     <v-spacer></v-spacer>
 
     <div class="d-flex">
-      <v-icon color="#ff33ae" @click="toggleEdit(!isEdit)"> mdi-pencil </v-icon>
+      <v-icon
+        :disabled="formData.isDone"
+        color="#ff33ae"
+        @click="toggleEdit(!isEdit)"
+      >
+        mdi-pencil
+      </v-icon>
       <v-icon class="ms-4" color="#ff33ae" @click="removeTask(formData.id)">
         mdi-trash-can-outline
       </v-icon>
@@ -74,11 +80,7 @@ export default {
   <div v-else-if="isEdit" class="d-flex align-center">
     <div class="d-flex align-center w-100">
       <span class="blue-grey--text text--darken-2 pa-0 me-4"> Edit: </span>
-      <v-text-field
-        v-model="formData.name"
-        hide-details="auto"
-        outlined
-      />
+      <v-text-field v-model="formData.name" hide-details="auto" outlined />
     </div>
 
     <v-spacer></v-spacer>
