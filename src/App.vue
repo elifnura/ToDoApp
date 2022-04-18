@@ -1,28 +1,41 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import TaskList from './components/TaskList.vue';
+import AddNewTask from './components/AddNewTask.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    TaskList,
+    AddNewTask,
   },
+  data: () => ({}),
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<template>
+  <v-app>
+    <v-main>
+      <v-toolbar color="#ff33ae" extended flat extension-height="120">
+      </v-toolbar>
+      <v-card
+        class="mx-auto pa-4 mb-10"
+        max-width="700"
+        style="margin-top: -64px"
+      >
+        <v-card-title
+          class="
+            blue-grey--text
+            text--darken-2 text-subtitle-1
+            font-weight-medium
+            pa-0
+            pb-3
+          "
+        >
+          New Todo:
+        </v-card-title>
+        <AddNewTask />
+      </v-card>
+      <TaskList />
+    </v-main>
+  </v-app>
+</template>
